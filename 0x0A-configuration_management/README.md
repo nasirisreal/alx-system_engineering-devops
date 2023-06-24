@@ -1,10 +1,10 @@
 # Configuration management
-Project done during **Full Stack Software Engineering studies** at **Holberton School**. It aims to learn about server configuration management using **Puppet**.
+Project done during **Full Stack Software Engineering studies** at **ALX SE Cohort 11**. It aims to learn about server configuration management using **Puppet**.
 
 ## Technologies
-* Scripts written in Bash 4.3.11(1)
-* Tested on Ubuntu 14.04 LTS
-* Puppet 3.8
+* Scripts written in Bash 5.0.17(1)
+* Tested on Ubuntu 20.04 LTS
+* Puppet 4.0
 
 ## Files
 
