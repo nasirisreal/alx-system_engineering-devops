@@ -10,10 +10,10 @@
 ## You can’t use systemctl for restarting nginx
 
 # Update the package lists
-apt-get -y update
+sudo apt-get -y update
 
 # Install Nginx
-apt-get -y install nginx
+sudo apt-get -y install nginx
 
 # Create the index.html file
 echo "Hello World!" > /var/www/html/index.html
@@ -34,4 +34,4 @@ server {
 EOF
 
 # Restart Nginx
-service nginx restart
+sudo service nginx restart
