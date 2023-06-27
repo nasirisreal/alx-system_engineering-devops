@@ -35,4 +35,3 @@ EOF
 
 # Restart Nginx
 service nginx restart
-
