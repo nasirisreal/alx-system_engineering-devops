@@ -12,7 +12,7 @@ echo "server {
     listen [::]:80 default_server;
 
     root /var/www/html;
-    index index.html;
+    index index.html index.nginx-debian.html;
 
     location / {
         return 200 'Hello World!';
