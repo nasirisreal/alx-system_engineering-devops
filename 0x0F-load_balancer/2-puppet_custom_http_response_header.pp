@@ -1,6 +1,16 @@
-# Configures a custom response header
+# Use Puppet to automate the task of creating a custom HTTP header response
 
-exec { 'create index':
-  command  => 'INDEX_COPY="Hello World!" && ERROR_COPY="Ceci n\'est pas une page - 404" && sudo apt-get -y update && sudo apt-get -y install nginx && echo "$INDEX_COPY" | sudo tee /var/www/html/index.nginx-debian.html > /dev/null && echo "$ERROR_COPY" | sudo tee /var/www/html/custom_404.html > /dev/null && sudo sed -i \'/^\sserver_name.*/a \        rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;\' /etc/nginx/sites-available/default && sudo sed -i \'/^\slocation.*/i \        error_page 404 /custom_404.html;\' /etc/nginx/sites-available/default && sudo sed -i \'/^\slocation.*/i \        add_header X-Served-By $hostname;\' /etc/nginx/sites-available/default && sudo service nginx start',
-  provider => shell,
+exec {'update':
+  command => '/usr/bin/apt-get update',
+}
+-> package {'nginx':
+  ensure => 'present',
+}
+-> file_line { 'http_header':
+  path  => '/etc/nginx/nginx.conf',
+  match => 'http {',
+  line  => "http {\n\tadd_header X-Served-By \"${hostname}\";",
+}
+-> exec {'run':
+  command => '/usr/sbin/service nginx restart',
 }
