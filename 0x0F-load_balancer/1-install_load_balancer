@@ -7,7 +7,7 @@ echo -e "Updating and doing some minor checks...\n"
 function install() {
 	command -v "$1" &> /dev/null
 
-	#shellcheck disable=SC2181
+	#shellcheck disable=SC2154
 	if [ $? -ne 0 ]; then
 		echo -e "	Installing: $1\n"
 		sudo apt-get update -y -qq && \
